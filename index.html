@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ศูนย์รวมระบบสารสนเทศและการจัดการข้อมูล</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Prompt', 'sans-serif'],
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f8fafc',
+                            100: '#f1f5f9',
+                            500: '#64748b',
+                            800: '#1e293b',
+                            900: '#0f172a', 
+                        },
+                        accent: {
+                            500: '#f97316',
+                            700: '#c2410c', 
+                        }
+                    },
+                    boxShadow: {
+                        'card': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
+                        'card-hover': '0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        body { background-color: #f1f5f9; color: #1e293b; }
+        .fade-in { animation: fadeIn 0.5s ease-out forwards; opacity: 0; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+        /* Staggered animation delays for cards */
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
+        .delay-300 { animation-delay: 300ms; }
+        .delay-400 { animation-delay: 400ms; }
+        .delay-500 { animation-delay: 500ms; }
+        .delay-600 { animation-delay: 600ms; }
+        .delay-700 { animation-delay: 700ms; }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col">
+
+    <!-- Header Section -->
+    <header class="bg-brand-900 text-white shadow-lg relative overflow-hidden">
+        <!-- Background Pattern -->
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_1px_1px,#fff_1px,transparent_0)] [background-size:24px_24px]"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative z-10">
+            <div class="flex flex-col items-center text-center">
+                <div class="bg-accent-700 p-3 rounded-xl mb-4 shadow-lg inline-block">
+                    <i data-lucide="layers" class="w-8 h-8 text-white"></i>
+                </div>
+                <h1 class="text-3xl md:text-4xl font-bold tracking-tight mb-3">ศูนย์รวมระบบสารสนเทศและการจัดการข้อมูล</h1>
+                <p class="text-brand-100 text-lg max-w-2xl font-light">
+                    รวบรวมระบบรายงานผล การเฝ้าระวังด้านสุขภาพ และการบริหารจัดการคลังวัสดุ
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">
+        
+        <div class="mb-8 flex items-center justify-between border-b border-slate-200 pb-4">
+            <h2 class="text-xl font-semibold text-brand-900 flex items-center gap-2">
+                <i data-lucide="layout-grid" class="w-5 h-5 text-brand-500"></i> หมวดหมู่ระบบงานทั้งหมด
+            </h2>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <!-- Card 1 -->
+            <a href="#" class="group bg-white rounded-2xl p-6 border border-slate-100 shadow-card hover:shadow-card-hover hover:border-accent-500/30 transition-all duration-300 fade-in delay-100 flex flex-col h-full relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-slate-50 to-transparent rounded-bl-full opacity-50 group-hover:from-accent-50/50 transition-colors"></div>
+                <div class="bg-brand-50 w-12 h-12 rounded-xl flex items-center justify-center mb-4 group-hover:bg-accent-50 transition-colors z-10">
+                    <i data-lucide="clipboard-list" class="w-6 h-6 text-brand-500 group-hover:text-accent-500 transition-colors"></i>
+                </div>
+                <h3 class="text-lg font-semibold text-brand-900 mb-2 z-10 group-hover:text-accent-700 transition-colors">ขั้นตอนการให้บริการ</h3>
+                <p class="text-sm text-slate-500 mt-auto z-10">ผังแสดงขั้นตอนและมาตรฐานการให้บริการสำหรับเจ้าหน้าที่และผู้รับบริการ</p>
+            </a>
+
+            <!-- Card 2 -->
+            <a href="#" class="group bg-white rounded-2xl p-6 border border-slate-100 shadow-card hover:shadow-card-hover hover:border-accent-500/30 transition-all duration-300 fade-in delay-200 flex flex-col h-full relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-slate-50 to-transparent rounded-bl-full opacity-50 group-hover:from-accent-50/50 transition-colors"></div>
+                <div class="bg-brand-50 w-12 h-12 rounded-xl flex items-center justify-center mb-4 group-hover:bg-accent-50 transition-colors z-10">
+                    <i data-lucide="activity" class="w-6 h-6 text-brand-500 group-hover:text-accent-500 transition-colors"></i>
+                </div>
+                <h3 class="text-lg font-semibold text-brand-900 mb-2 z-10 group-hover:text-accent-700 transition-colors">ระบบเฝ้าระวังผู้ป่วย PM2.5</h3>
+                <p class="text-sm text-slate-500 mt-auto z-10">เฝ้าระวังเคสผู้ป่วยที่สัมพันธ์กับฝุ่น PM2.5 ที่แผนก OPD, ER และ PCU หนองหาร</p>
+            </a>
+
+            <!-- Card 3 -->
+            <a href="#" class="group bg-white rounded-2xl p-6 border border-slate-100 shadow-card hover:shadow-card-hover hover:border-accent-500/30 transition-all duration-300 fade-in delay-300 flex flex-col h-full relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-slate-50 to-transparent rounded-bl-full opacity-50 group-hover:from-accent-50/50 transition-colors"></div>
+                <div class="bg-brand-50 w-12 h-12 rounded-xl flex items-center justify-center mb-4 group-hover:bg-accent-50 transition-colors z-10">
+                    <i data-lucide="wind" class="w-6 h-6 text-brand-500 group-hover:text-accent-500 transition-colors"></i>
+                </div>
+                <h3 class="text-lg font-semibold text-brand-900 mb-2 z-10 group-hover:text-accent-700 transition-colors">ค่าฝุ่น PM2.5</h3>
+                <p class="text-sm text-slate-500 mt-auto z-10">แดชบอร์ดแสดงสถานการณ์คุณภาพอากาศและปริมาณฝุ่นละอองขนาดเล็ก</p>
+            </a>
+
+            <!-- Card 4 -->
+            <a href="#" class="group bg-white rounded-2xl p-6 border border-slate-100 shadow-card hover:shadow-card-hover hover:border-accent-500/30 transition-all duration-300 fade-in delay-400 flex flex-col h-full relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-slate-50 to-transparent rounded-bl-full opacity-50 group-hover:from-accent-50/50 transition-colors"></div>
+                <div class="bg-brand-50 w-12 h-12 rounded-xl flex items-center justify-center mb-4 group-hover:bg-accent-50 transition-colors z-10">
+                    <i data-lucide="shield-check" class="w-6 h-6 text-brand-500 group-hover:text-accent-500 transition-colors"></i>
+                </div>
+                <h3 class="text-lg font-semibold text-brand-900 mb-2 z-10 group-hover:text-accent-700 transition-colors">ห้องปลอดฝุ่น รพ. สันทราย</h3>
+                <p class="text-sm text-slate-500 mt-auto z-10">ระบบตรวจสอบและจัดการข้อมูลห้องปลอดฝุ่นภายในโรงพยาบาล</p>
+            </a>
+
+            <!-- Card 5 -->
+            <a href="#" class="group bg-white rounded-2xl p-6 border border-slate-100 shadow-card hover:shadow-card-hover hover:border-accent-500/30 transition-all duration-300 fade-in delay-500 flex flex-col h-full relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-slate-50 to-transparent rounded-bl-full opacity-50 group-hover:from-accent-50/50 transition-colors"></div>
+                <div class="bg-brand-50 w-12 h-12 rounded-xl flex items-center justify-center mb-4 group-hover:bg-accent-50 transition-colors z-10">
+                    <i data-lucide="microscope" class="w-6 h-6 text-brand-500 group-hover:text-accent-500 transition-colors"></i>
+                </div>
+                <h3 class="text-lg font-semibold text-brand-900 mb-2 z-10 group-hover:text-accent-700 transition-colors">คลินิกมลพิษ & สอบสวนโรค</h3>
+                <p class="text-sm text-slate-500 mt-auto z-10">ระบบลงบันทึกข้อมูลคลินิกมลพิษและติดตามการสอบสวนโรค</p>
+            </a>
+
+            <!-- Card 6 -->
+            <a href="#" class="group bg-white rounded-2xl p-6 border border-slate-100 shadow-card hover:shadow-card-hover hover:border-accent-500/30 transition-all duration-300 fade-in delay-600 flex flex-col h-full relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-slate-50 to-transparent rounded-bl-full opacity-50 group-hover:from-accent-50/50 transition-colors"></div>
+                <div class="bg-brand-50 w-12 h-12 rounded-xl flex items-center justify-center mb-4 group-hover:bg-accent-50 transition-colors z-10">
+                    <i data-lucide="package" class="w-6 h-6 text-brand-500 group-hover:text-accent-500 transition-colors"></i>
+                </div>
+                <h3 class="text-lg font-semibold text-brand-900 mb-2 z-10 group-hover:text-accent-700 transition-colors">คลังวัสดุ & เวชภัณฑ์ยา</h3>
+                <p class="text-sm text-slate-500 mt-auto z-10">ระบบบริหารจัดการคลังวัสดุการแพทย์และคลังเวชภัณฑ์ยา</p>
+            </a>
+
+            <!-- Card 7 -->
+            <a href="#" class="group bg-white rounded-2xl p-6 border border-slate-100 shadow-card hover:shadow-card-hover hover:border-accent-500/30 transition-all duration-300 fade-in delay-700 flex flex-col h-full relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-slate-50 to-transparent rounded-bl-full opacity-50 group-hover:from-accent-50/50 transition-colors"></div>
+                <div class="bg-brand-50 w-12 h-12 rounded-xl flex items-center justify-center mb-4 group-hover:bg-accent-50 transition-colors z-10">
+                    <i data-lucide="map" class="w-6 h-6 text-brand-500 group-hover:text-accent-500 transition-colors"></i>
+                </div>
+                <h3 class="text-lg font-semibold text-brand-900 mb-2 z-10 group-hover:text-accent-700 transition-colors">แผนที่ความเสี่ยง อ.สันทราย</h3>
+                <p class="text-sm text-slate-500 mt-auto z-10">แผนที่ภูมิสารสนเทศแสดงระดับความเสี่ยงด้านสุขภาพในพื้นที่อำเภอสันทราย</p>
+            </a>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center text-sm text-slate-500">
+            &copy; <script>document.write(new Date().getFullYear())</script> ระบบสารสนเทศและการจัดการข้อมูล
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+    </script>
+</body>
+</html>
