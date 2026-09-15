@@ -90,14 +90,14 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             
             <!-- Card 1 -->
-            <a href="https://praetinee.github.io/PM25WorkFlow/" class="group bg-white rounded-2xl p-6 border border-slate-100 shadow-card hover:shadow-card-hover hover:border-accent-500/30 transition-all duration-300 fade-in delay-100 flex flex-col h-full relative overflow-hidden">
+            <button type="button" onclick="openModal()" class="text-left w-full group bg-white rounded-2xl p-6 border border-slate-100 shadow-card hover:shadow-card-hover hover:border-accent-500/30 transition-all duration-300 fade-in delay-100 flex flex-col h-full relative overflow-hidden cursor-pointer">
                 <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-slate-50 to-transparent rounded-bl-full opacity-50 group-hover:from-accent-50/50 transition-colors"></div>
                 <div class="bg-brand-50 w-12 h-12 rounded-xl flex items-center justify-center mb-4 group-hover:bg-accent-50 transition-colors z-10">
                     <i data-lucide="clipboard-list" class="w-6 h-6 text-brand-500 group-hover:text-accent-500 transition-colors"></i>
                 </div>
                 <h3 class="text-lg font-semibold text-brand-900 mb-2 z-10 group-hover:text-accent-700 transition-colors">ขั้นตอนการให้บริการ</h3>
                 <p class="text-sm text-slate-500 mt-auto z-10">ผังแสดงขั้นตอนและมาตรฐานการให้บริการสำหรับเจ้าหน้าที่และผู้รับบริการ</p>
-            </a>
+            </button>
 
             <!-- Card 2 -->
             <a href="https://praetinee.github.io/PM25SsHosSurveillance/" class="group bg-white rounded-2xl p-6 border border-slate-100 shadow-card hover:shadow-card-hover hover:border-accent-500/30 transition-all duration-300 fade-in delay-200 flex flex-col h-full relative overflow-hidden">
@@ -170,6 +170,33 @@
             </a>
 
         </div>
+        <!-- Modal Popup (ซ่อนเป็นค่าเริ่มต้น) -->
+        <div id="serviceModal" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 hidden flex items-center justify-center opacity-0 transition-opacity duration-300">
+            <div class="bg-white rounded-2xl p-6 w-[90%] max-w-md shadow-2xl transform scale-95 transition-all duration-300 relative">
+                
+                <!-- ปุ่มปิด (กากบาท) -->
+                <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 transition-colors">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+                
+                <!-- หัวข้อ -->
+                <div class="flex items-center gap-3 mb-1">
+                    <i data-lucide="layers" class="w-6 h-6 text-brand-900"></i>
+                    <h3 class="text-xl font-bold text-brand-900 font-inter">เลือกระบบที่ต้องการ</h3>
+                </div>
+                <p class="text-sm text-slate-500 mb-6 ml-9">กรุณาเลือกระบบงานเพื่อเข้าสู่หน้าต่างบริการ</p>
+                
+                <!-- ปุ่มตัวเลือก (ดีไซน์ตามภาพตัวอย่าง) -->
+                <div class="flex flex-col gap-3">
+                    <a href="https://praetinee.github.io/PM25WorkFlow/" class="w-full bg-[#151B2B] text-white font-medium py-3 px-4 rounded-xl hover:bg-slate-800 transition-colors flex justify-center items-center">
+                        ขั้นตอนการให้บริการผู้ป่วย PM2.5
+                    </a>
+                    <a href="https://praetinee.github.io/PM25Roles/" class="w-full bg-white border border-slate-300 text-slate-700 font-medium py-3 px-4 rounded-xl hover:bg-slate-50 transition-colors flex justify-center items-center">
+                        บทบาทของแต่ละหน่วยงาน
+                    </a>
+                </div>
+            </div>
+        </div>
     </main>
 
     <!-- Footer -->
@@ -181,6 +208,35 @@
 
     <script>
         lucide.createIcons();
+    </script>
+    <!-- สคริปต์ควบคุม Modal -->
+    <script>
+        const modal = document.getElementById('serviceModal');
+        const modalContent = modal.querySelector('div');
+
+        function openModal() {
+            modal.classList.remove('hidden');
+            // Trigger reflow เพื่อให้ transition ทำงาน
+            void modal.offsetWidth;
+            modal.classList.remove('opacity-0');
+            modalContent.classList.remove('scale-95');
+        }
+
+        function closeModal() {
+            modal.classList.add('opacity-0');
+            modalContent.classList.add('scale-95');
+            // รอให้ Animation จบก่อนค่อยซ่อน (300ms เท่ากับค่า duration-300)
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        // ปิดหน้าต่างเมื่อคลิกพื้นที่ว่างด้านนอก
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
     </script>
 </body>
 </html>
