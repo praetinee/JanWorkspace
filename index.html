@@ -82,13 +82,7 @@
 
                 <!-- แถบสถิติผู้เข้าชม + ปุ่มติดตั้งลงเครื่อง -->
                 <div class="flex flex-wrap items-center justify-center gap-3 mt-1">
-                    <!-- Visitor Counter Badge -->
-                    <div class="inline-flex items-center gap-2 bg-brand-800/80 border border-slate-700/80 px-4 py-1.5 rounded-full text-sm text-slate-300 backdrop-blur-sm">
-                        <span class="w-2 h-2 rounded-full bg-accent-500 animate-pulse"></span>
-                        <span>เข้าใช้งานแล้ว</span>
-                        <span id="visit-count" class="font-bold text-white tracking-wide">...</span>
-                        <span>ครั้ง</span>
-                    </div>
+
 
                     <!-- Install PWA Button (แสดงอัตโนมัติเมื่อเปิดบน PC/Android ที่ยังไม่ติดตั้ง) -->
                     <button id="installBtn" class="hidden inline-flex items-center gap-2 bg-accent-500 hover:bg-accent-700 text-white font-medium px-4 py-1.5 rounded-full text-sm transition-colors shadow-md cursor-pointer">
@@ -291,8 +285,18 @@
 
     <!-- Footer -->
     <footer class="bg-white border-t border-slate-200 mt-auto">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center text-sm text-slate-500">
-            &copy; <script>document.write(new Date().getFullYear())</script> Workspace - Praetinee Pattamayutanon
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-center relative gap-3 text-sm text-slate-500">
+            <div>
+                &copy; <script>document.write(new Date().getFullYear())</script> Workspace - Praetinee Pattamayutanon
+            </div>
+            
+            <!-- Visitor Counter มุมขวาล่าง -->
+            <div class="sm:absolute sm:right-6 lg:right-8 inline-flex items-center gap-1.5 bg-slate-50 border border-slate-200/80 px-3 py-1 rounded-full text-xs text-slate-500">
+                <i data-lucide="eye" class="w-3.5 h-3.5 text-slate-400"></i>
+                <span>เข้าใช้งาน</span>
+                <span id="visit-count" class="font-semibold text-slate-700">...</span>
+                <span>ครั้ง</span>
+            </div>
         </div>
     </footer>
 
