@@ -78,18 +78,13 @@
                 <div class="bg-accent-700 p-3 rounded-xl mb-4 shadow-lg inline-block">
                     <i data-lucide="terminal" class="w-8 h-8 text-white"></i>
                 </div>
-                <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-4 font-inter">Workspace</h1>
+                <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-2 font-inter">Workspace</h1>
 
-                <!-- แถบสถิติผู้เข้าชม + ปุ่มติดตั้งลงเครื่อง -->
-                <div class="flex flex-wrap items-center justify-center gap-3 mt-1">
-
-
-                    <!-- Install PWA Button (แสดงอัตโนมัติเมื่อเปิดบน PC/Android ที่ยังไม่ติดตั้ง) -->
-                    <button id="installBtn" class="hidden inline-flex items-center gap-2 bg-accent-500 hover:bg-accent-700 text-white font-medium px-4 py-1.5 rounded-full text-sm transition-colors shadow-md cursor-pointer">
-                        <i data-lucide="download" class="w-4 h-4"></i>
-                        <span>ติดตั้งลงเครื่อง</span>
-                    </button>
-                </div>
+                <!-- ปุ่มติดตั้งลงเครื่อง (PWA) -->
+                <button id="installBtn" class="hidden mt-3 inline-flex items-center gap-2 bg-accent-500 hover:bg-accent-700 text-white font-medium px-4 py-1.5 rounded-full text-sm transition-colors shadow-md cursor-pointer">
+                    <i data-lucide="download" class="w-4 h-4"></i>
+                    <span>ติดตั้งลงเครื่อง</span>
+                </button>
             </div>
         </div>
     </header>
@@ -324,22 +319,20 @@
             if (e.target === modal) closeModal();
         });
 
-        // 2. ระบบนับจำนวนผู้เข้าชม (CounterAPI V2)
-        // เปลี่ยน YOUR_WORKSPACE เป็นชื่อ Workspace ที่สร้างไว้ใน counterapi.dev
-        const COUNTER_WORKSPACE = 'Jan_Workspace';
-        const COUNTER_NAME = 'workspace-visits';
+        // 2. ระบบนับจำนวนผู้เข้าชมผ่าน Google Sheets
+        const SHEET_API_URL = 'https://script.google.com/macros/s/AKfycbzeAEPE0RC9thcHC2fNRl8saYcN1i2DiC77dm29PDh7f6swKCJWwyginBfZi6wGSdgx2A/exec';
 
         async function updateVisitCount() {
             const countEl = document.getElementById('visit-count');
-            if (COUNTER_WORKSPACE === 'YOUR_WORKSPACE') {
+            if (!SHEET_API_URL.startsWith('https://')) {
                 countEl.textContent = '-';
                 return;
             }
             try {
-                const res = await fetch(`https://api.counterapi.dev/v2/${COUNTER_WORKSPACE}/${COUNTER_NAME}/up`);
-                const json = await res.json();
-                if (json?.data?.up_count !== undefined) {
-                    countEl.textContent = json.data.up_count.toLocaleString('th-TH');
+                const res = await fetch(SHEET_API_URL);
+                const data = await res.json();
+                if (data?.count !== undefined) {
+                    countEl.textContent = Number(data.count).toLocaleString('th-TH');
                 }
             } catch (err) {
                 countEl.textContent = '-';
