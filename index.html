@@ -4,11 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Workspace</title>
+
+    <!-- PWA Config -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0f172a">
+    <link rel="icon" href="icon.svg" type="image/svg+xml">
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- เปลี่ยน URL เป็น Chakra Petch -->
     <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Tailwind CSS -->
@@ -19,7 +23,6 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        // ปรับให้ทั้งคลาสพื้นฐาน (sans) และคลาสพิเศษ (inter) ใช้ Chakra Petch ทั้งหมด
                         sans: ['"Chakra Petch"', 'sans-serif'],
                         inter: ['"Chakra Petch"', 'sans-serif'],
                     },
@@ -32,6 +35,7 @@
                             900: '#0f172a', 
                         },
                         accent: {
+                            50: '#fff7ed',
                             500: '#f97316',
                             700: '#c2410c', 
                         }
@@ -74,7 +78,24 @@
                 <div class="bg-accent-700 p-3 rounded-xl mb-4 shadow-lg inline-block">
                     <i data-lucide="terminal" class="w-8 h-8 text-white"></i>
                 </div>
-                <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-2 font-inter">Workspace</h1>
+                <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-4 font-inter">Workspace</h1>
+
+                <!-- แถบสถิติผู้เข้าชม + ปุ่มติดตั้งลงเครื่อง -->
+                <div class="flex flex-wrap items-center justify-center gap-3 mt-1">
+                    <!-- Visitor Counter Badge -->
+                    <div class="inline-flex items-center gap-2 bg-brand-800/80 border border-slate-700/80 px-4 py-1.5 rounded-full text-sm text-slate-300 backdrop-blur-sm">
+                        <span class="w-2 h-2 rounded-full bg-accent-500 animate-pulse"></span>
+                        <span>เข้าใช้งานแล้ว</span>
+                        <span id="visit-count" class="font-bold text-white tracking-wide">...</span>
+                        <span>ครั้ง</span>
+                    </div>
+
+                    <!-- Install PWA Button (แสดงอัตโนมัติเมื่อเปิดบน PC/Android ที่ยังไม่ติดตั้ง) -->
+                    <button id="installBtn" class="hidden inline-flex items-center gap-2 bg-accent-500 hover:bg-accent-700 text-white font-medium px-4 py-1.5 rounded-full text-sm transition-colors shadow-md cursor-pointer">
+                        <i data-lucide="download" class="w-4 h-4"></i>
+                        <span>ติดตั้งลงเครื่อง</span>
+                    </button>
+                </div>
             </div>
         </div>
     </header>
@@ -88,7 +109,7 @@
             </h2>
         </div>
 
-        <!-- Projects Grid -->
+        <!-- Projects Grid: PM2.5 -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             
             <!-- Card 1 -->
@@ -172,6 +193,7 @@
             </a>
 
         </div>
+
         <!-- Section: งานอาชีวเวชกรรม -->
         <div class="mt-12 mb-8 flex items-center justify-between border-b border-slate-200 pb-4">
             <h2 class="text-xl font-semibold text-brand-900 flex items-center gap-2">
@@ -202,7 +224,6 @@
                 <p class="text-sm text-slate-500 mt-auto z-10">ระบบบันทึกและรายงานข้อมูลโรคที่เกิดจากการทำงานและสิ่งแวดล้อม</p>
             </a>
 
-            <!-- แทรก Card 3 เริ่มตรงนี้ -->
             <!-- Card 3: รายงานภาวะสุขภาพบุคลากร รพ.สันทราย -->
             <a href="https://praetinee.github.io/SsHosStaffWellness/" class="group bg-white rounded-2xl p-6 border border-slate-100 shadow-card hover:shadow-card-hover hover:border-accent-500/30 transition-all duration-300 fade-in delay-300 flex flex-col h-full relative overflow-hidden">
                 <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-slate-50 to-transparent rounded-bl-full opacity-50 group-hover:from-accent-50/50 transition-colors"></div>
@@ -212,9 +233,7 @@
                 <h3 class="text-lg font-semibold text-brand-900 mb-2 z-10 group-hover:text-accent-700 transition-colors">รายงานภาวะสุขภาพบุคลากร รพ.สันทราย</h3>
                 <p class="text-sm text-slate-500 mt-auto z-10">ระบบรายงานและติดตามภาวะสุขภาพของบุคลากรภายในโรงพยาบาล</p>
             </a>
-            <!-- สิ้นสุดส่วนที่แทรก -->
             
-            <!-- แทรก Card 4 เริ่มตรงนี้ -->
             <!-- Card 4: จุลินทรีย์ในอากาศ -->
             <a href="https://praetinee.github.io/SsHosEnv/" class="group bg-white rounded-2xl p-6 border border-slate-100 shadow-card hover:shadow-card-hover hover:border-accent-500/30 transition-all duration-300 fade-in delay-400 flex flex-col h-full relative overflow-hidden">
                 <div class="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-slate-50 to-transparent rounded-bl-full opacity-50 group-hover:from-accent-50/50 transition-colors"></div>
@@ -244,27 +263,20 @@
                 <h3 class="text-lg font-semibold text-brand-900 mb-2 z-10 group-hover:text-accent-700 transition-colors">การประเมินความพึงพอใจ</h3>
                 <p class="text-sm text-slate-500 mt-auto z-10">แบบประเมินความพึงพอใจต่อการให้บริการงานอาชีวเวชกรรม</p>
             </a>
-            <!-- สิ้นสุดส่วนที่แทรก -->
 
         </div>
-        <!-- Modal Popup (ซ่อนเป็นค่าเริ่มต้น) -->
-        <!-- Modal Popup (ซ่อนเป็นค่าเริ่มต้น) -->
+
+        <!-- Modal Popup -->
         <div id="serviceModal" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 hidden flex items-center justify-center opacity-0 transition-opacity duration-300">
             <div class="bg-white rounded-2xl p-6 w-[90%] max-w-md shadow-2xl transform scale-95 transition-all duration-300 relative">
-                
-                <!-- ปุ่มปิด (กากบาท) -->
                 <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 transition-colors">
                     <i data-lucide="x" class="w-5 h-5"></i>
                 </button>
-                
-                <!-- หัวข้อ -->
                 <div class="flex items-center gap-3 mb-1">
                     <i data-lucide="layers" class="w-6 h-6 text-brand-900"></i>
                     <h3 class="text-xl font-bold text-brand-900 font-inter">เลือกระบบที่ต้องการ</h3>
                 </div>
                 <p class="text-sm text-slate-500 mb-6 ml-9">กรุณาเลือกระบบงานเพื่อเข้าสู่หน้าต่างบริการ</p>
-                
-                <!-- ปุ่มตัวเลือก (ดีไซน์ตามภาพตัวอย่าง) -->
                 <div class="flex flex-col gap-3">
                     <a href="https://praetinee.github.io/PM25WorkFlow/" class="w-full bg-[#151B2B] text-white font-medium py-3 px-4 rounded-xl hover:bg-slate-800 transition-colors flex justify-center items-center">
                         ขั้นตอนการให้บริการผู้ป่วย PM2.5
@@ -286,15 +298,13 @@
 
     <script>
         lucide.createIcons();
-    </script>
-    <!-- สคริปต์ควบคุม Modal -->
-    <script>
+
+        // 1. สคริปต์ควบคุม Modal
         const modal = document.getElementById('serviceModal');
         const modalContent = modal.querySelector('div');
 
         function openModal() {
             modal.classList.remove('hidden');
-            // Trigger reflow เพื่อให้ transition ทำงาน
             void modal.offsetWidth;
             modal.classList.remove('opacity-0');
             modalContent.classList.remove('scale-95');
@@ -303,17 +313,62 @@
         function closeModal() {
             modal.classList.add('opacity-0');
             modalContent.classList.add('scale-95');
-            // รอให้ Animation จบก่อนค่อยซ่อน (300ms เท่ากับค่า duration-300)
-            setTimeout(() => {
-                modal.classList.add('hidden');
-            }, 300);
+            setTimeout(() => { modal.classList.add('hidden'); }, 300);
         }
 
-        // ปิดหน้าต่างเมื่อคลิกพื้นที่ว่างด้านนอก
         modal.addEventListener('click', function(e) {
-            if (e.target === modal) {
-                closeModal();
+            if (e.target === modal) closeModal();
+        });
+
+        // 2. ระบบนับจำนวนผู้เข้าชม (CounterAPI V2)
+        // เปลี่ยน YOUR_WORKSPACE เป็นชื่อ Workspace ที่สร้างไว้ใน counterapi.dev
+        const COUNTER_WORKSPACE = 'Jan_Workspace';
+        const COUNTER_NAME = 'workspace-visits';
+
+        async function updateVisitCount() {
+            const countEl = document.getElementById('visit-count');
+            if (COUNTER_WORKSPACE === 'YOUR_WORKSPACE') {
+                countEl.textContent = '-';
+                return;
             }
+            try {
+                const res = await fetch(`https://api.counterapi.dev/v2/${COUNTER_WORKSPACE}/${COUNTER_NAME}/up`);
+                const json = await res.json();
+                if (json?.data?.up_count !== undefined) {
+                    countEl.textContent = json.data.up_count.toLocaleString('th-TH');
+                }
+            } catch (err) {
+                countEl.textContent = '-';
+            }
+        }
+        updateVisitCount();
+
+        // 3. ระบบติดตั้งลง PC (PWA)
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('./sw.js').catch(() => {});
+        }
+
+        let deferredPrompt;
+        const installBtn = document.getElementById('installBtn');
+
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            installBtn.classList.remove('hidden');
+        });
+
+        installBtn.addEventListener('click', async () => {
+            if (!deferredPrompt) return;
+            deferredPrompt.prompt();
+            const { outcome } = await deferredPrompt.userChoice;
+            if (outcome === 'accepted') {
+                installBtn.classList.add('hidden');
+            }
+            deferredPrompt = null;
+        });
+
+        window.addEventListener('appinstalled', () => {
+            installBtn.classList.add('hidden');
         });
     </script>
 </body>
